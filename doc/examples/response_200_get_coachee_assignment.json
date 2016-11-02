@@ -1,0 +1,29 @@
+[
+  {
+    "user": {
+      "username": "pzzheng",
+      "nickname": "peizhen zheng",
+      "id": "1",
+      "email": "pzzheng@thoughtworks.com",
+      "role": "Dev",
+      "department": "Professional Services"
+    },
+    "id": "assignment id",
+    "role": "coachee",
+    "program": {
+      "id": "xxx",
+      "name": "pre-lead",
+      "links": {
+        "self": "/programs/1"
+      }
+    },
+    "coach": {
+      "username": "hxu",
+      "nickname": "hao xu",
+      "id": "1",
+      "email": "hxu@thoughtworks.com",
+      "role": "Dev",
+      "department": "Professional Services"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "count": 10,
+  "prev": "xx",
+  "next": "xxx",
+  "first": "xxx",
+  "last": "xxx",
+  "items": [
+    {
+      "id": "xxx",
+      "createdAt": 123123123,
+      "owner": "coachee name",
+      "creator": "username who create the self reflection. can be coach name",
+      "behaviors": [{
+        "id": "xxx",
+        "name": "xxx",
+        "description": "xxx",
+        "hint": "xxx",
+        "competence": {
+          "id": "xxx",
+          "name": "xxx",
+          "description": "xxx",
+          "category": {
+            "id": "xxx",
+            "name": "xxx"
+          }
+        }
+      }],
+      "evidences": [
+        {
+          "id": "xxx"
+        }
+      ]
+    }
+  ]
+}

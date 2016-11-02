@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]+$"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "img": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "description": "Same as jigsaw"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rel": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "rel",
+          "uri"
+        ]
+      }
+    }
+  },
+  "required": [
+    "username",
+    "email",
+    "id",
+    "department",
+    "role",
+    "nickname",
+    "links"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "1",
+  "username": "jksun",
+  "email": "jksun@thoughtworks.com",
+  "img": "imgs/img.gif",
+  "role": "Dev",
+  "nickname": "Jiankang Sun",
+  "department": "Professional Services",
+  "links": [
+    {
+      "rel": "self",
+      "uri": "/users/1"
+    },
+    {
+    	"rel": "programs",
+    	"uri": "/users/1/programs"
+    }
+  ]
+}

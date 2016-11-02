@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": ["state", "field"]
+          },
+          "field": {
+            "type": "string",
+            "description": "error field"
+          },
+          "message": {
+            "type": "string",
+            "description": "error detail"
+          }
+        },
+        "required": [
+          "type",
+          "message"
+        ]
+      }
+    }
+  },
+  "required": [
+    "count",
+    "items"
+  ]
+}

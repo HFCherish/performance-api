@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "count": {
+      "type": "number"
+    },
+    "self": {
+      "type": "string"
+    },
+    "first": {
+      "type": "string"
+    },
+    "last": {
+      "type": "string"
+    },
+    "prev": {
+      "type": "string"
+    },
+    "next": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        },
+        "email": {
+        	"type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": "object",
+          "properties": {
+            "rel": {
+              "type": "string"
+            },
+            "uri": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "rel",
+            "uri"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "username",
+        "email",
+        "links"
+      ]
+    },
+    "required": [
+      "count",
+      "self",
+      "first",
+      "last",
+      "prev",
+      "next",
+      "items"
+    ]
+  }
+}

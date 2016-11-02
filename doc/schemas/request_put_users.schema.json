@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "department": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "description": "Same as jigsaw"
+    },
+    "nickname": {
+      "type": "string",
+      "description": "Same as jigsaw"
+    },
+    "email": {
+      "type": "string"
+    },
+    "home_office": {
+      "type": "string",
+      "description": "Same as jigsaw"
+    },
+    "type": {
+      "enum": ["SYSTEM_ADMIN", "NORMAL"]
+    }
+  },
+  "required": [
+    "department",
+    "role",
+    "nickname",
+    "home_office",
+    "type",
+    "email"
+  ]
+}

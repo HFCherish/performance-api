@@ -1,0 +1,18 @@
+[
+  {
+    "username": "jksun",
+    "email": "jksun@thoughtworks.com",
+    "nickname": "Jiankang Sun",
+    "id": "123",
+    "links": [
+      {
+        "rel": "self",
+        "uri": "/users/1"
+      },
+      {
+        "rel": "assignments",
+        "uri": "/users/1/assignments"
+      }
+    ]
+  }
+]

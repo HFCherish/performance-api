@@ -1,0 +1,62 @@
+{
+  "id": "xxx",
+  "content": "xxx",
+  "status": "submitted | unsubmitted",
+  "createAt": 67586903678,
+  "selfReflection": "xxx",
+  "owner": {
+    "username": "pzzheng",
+    "nickname": "peizhen zheng",
+    "id": "1",
+    "email": "pzzheng@thoughtworks.com",
+    "role": "Dev",
+    "department": "Professional Services"
+  },
+  "observers": [
+    {
+      "id": "xx",
+      "nickname": "xxx",
+      "username": "xxx"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "uri": "/users/xxx/self_reflections/xxx/evidences/xxx"
+    }
+  ],
+  "behavior": {
+    "id": "xxx",
+    "name": "xxx",
+    "description": "xxx",
+    "hint": "xxx",
+    "competence": {
+      "id": "xxx",
+      "name": "xxx",
+      "description": "xxx",
+      "category": {
+        "id": "xxx",
+        "name": "xxx"
+      },
+      "links": {
+        "self": "competences/1"
+      }
+    }
+  },
+  "feedbacks": [
+    {
+      "id": "xxx",
+      "author": {
+        "username": "xxx",
+        "nickname": "xxx"
+      },
+      "author_role": "coach | observer",
+      "program": {
+        "id": "xx",
+        "name": "xxx"
+      },
+      "feedback_type": "endorse | comment",
+      "comment": "xxx"
+    }
+  ]
+}
