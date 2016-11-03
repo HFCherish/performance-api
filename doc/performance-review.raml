@@ -1,5 +1,5 @@
 #%RAML 0.8
-title: performance review
+title: feedback API
 version: v2
 mediaType:  application/json
 
@@ -186,32 +186,6 @@ schemas:
             body:
               example: !include examples/response_400_post_users.json
               schema: !include schemas/response_400.schema.json
-    /projects:
-      get:
-        description: list all projects
-        responses:
-          200:
-            body:
-              application/json:
-                example: |
-                  {
-                    "count": 10,
-                    "first": "xx",
-                    "last": "",
-                    "prev": "",
-                    "next": "",
-                    "items": [
-                      {
-                        "id": "xxx",
-                        "name": "",
-                        "description": "",
-                        "status": "PUBLISHED",
-                        "links": {
-                            "self": "programs/1"
-                        }
-                      }
-                    ]
-                  }
     /assignments:
         get:
             description: list all program assignment for one person
@@ -272,7 +246,7 @@ schemas:
                   application/json:
                     example: !include examples/response_200_get_evidences.json
     /programs/pid:
-      /self_reviews:
+      /self_reflections:
         post:
           description: create new self reflection
           body:
@@ -302,13 +276,13 @@ schemas:
           queryParameters:
               isComplete:
                   type: string
-                  description: if there is at least one evidence for the self review, the self review is complete
+                  description: if there is at least one evidence for the self reflection, the self reflection is complete
           responses:
             200:
               body:
                 application/json:
                   example: !include examples/response_200_get_self_reflections.json
-        /{selfReviewId}:
+        /{selfReflectionId}:
           get:
             description: get one self reflection, include evidence draft if current user is the author
             responses:
@@ -835,7 +809,7 @@ schemas:
                   example: !include examples/response_200_get_assignment.json
 /assignments:
       post:
-        description: as system admin add new sponsor/sponsee or project lead/member assignment
+        description: add new sponsor/sponsee or project lead/member assignment
         body:
           schema: |
             {
@@ -894,7 +868,7 @@ schemas:
           201:
           400:
       get:
-          description: Get all assignment info
+          description: Get all assignment info of this program
           responses:
             200:
               body:
