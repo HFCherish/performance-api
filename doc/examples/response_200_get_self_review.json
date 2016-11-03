@@ -60,6 +60,7 @@
       "behavior": {
         "id": "behavior_id"
       },
+      "createdAt": 576890,
       "status": "submitted | unsubmitted",
       "links": [
         {

@@ -146,31 +146,34 @@
 
 # contains right feedbacks info when get one self_review
 
+# contains only feedback of self when get one self_review by observer
 
-# /users/uid/self_reflections/srId/evidences
+# /users/{username}/programs/{programId}/self_reviews/{srId}/evidences
 * post
-	* return 201 when create new evidence for some user
-	* save to db and can get that evidence later
-	* contains url in location
+	* do not contains observers info when post evidence
 
-	* return 400 when content, witness empty;
+	* return 400 when content, behavior empty;
+	* return 400 when the behavior is not belongs to this self review
 
-	* return 403 when is not consitent with uid
+	* return 403 when current user is not {username}
 
-# /users/uid/self_reflections/srId/evidences/eid
-* get
-	* return 200 when get one evidence;
-	* contains right id, content, links in response;
-	* 
-	* return 404 when not exists;
+# /users/{username}/programs/{programId}/self_reviews/{srId}/evidences/{eid}
+* put
+	* return 204 when update evidence
+	* udpate from db
 
-	* return 403 when not owner of self_reflection or not witness of the this evidence or not admin
+	* return 404 when the evidence does not exists for this self_review
+
+	* return 403 when current user is not {username}
+	
+	* return 409 when the evidence has been submitted
+* delete
+	* modify the path
+* /submit
+	* modify the path	
 
 # contains right evidences info when get one self_review
 
-# save witnesses and feedbacks when create evidence
-    * save witnesses to db
-	* save feedbacks for each witness to db
 
 
 

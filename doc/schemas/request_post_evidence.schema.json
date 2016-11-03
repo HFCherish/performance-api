@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "content": { "type": "string" },
+    "behavior": {
+      "type": "string",
+      "description": "behavior id"
+    },
+    "required": ["content", "behavior"]
+  }
+}

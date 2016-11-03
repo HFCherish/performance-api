@@ -351,46 +351,19 @@ schemas:
             description: create new evidence
             body:
               application/json:
-                schema: |
-                  {
-                    "type": "object",
-                    "properties": {
-                      "content": { "type": "string" },
-                      "observers": {
-                        "type": "array",
-                        "items": { "type": "string" }
-                      },
-                      "behavior": {
-                        "type": "string",
-                        "description": "behavior id"
-                      }
-                    }
-                  }
-                example: |
-                  {
-                    "content": "xxxx",
-                    "observers": ["pzzheng", "scxu", "jksun"],
-                    "behavior": "123123123"
-                  }
+                schema: !include schemas/request_post_evidence.schema.json
+                example: !include examples/request_post_evidence.json
             responses:
               201:
               404:
           /{evidenceId}:
-            get:
-              description: show evidences for this user in this program
-              responses:
-                200:
-                  body:
-                    application/json:
-                      example: !include examples/response_200_get_evidence.json
             put:
                 description: update evidence
                 body:
                   schema: |
                     {
                       "properties": {
-                        "content": { "type": "string" },
-                        "observers": { "type": "array", "items": { "type": "string" } }
+                        "content": { "type": "string" }
                       }
                     }
                   example: |
