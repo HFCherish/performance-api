@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "username": { "type": "string" },
+              "type": { "enum": ["SPONSOR"] }
+            },
+            "required": ["username", "type"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string"
+              },
+              "type": {
+                "enum": ["PROJECT_LEAD"]
+              },
+              "project": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "startDate": {"type": "number"},
+                  "endDate": {"type": "number"}
+                },
+                "required": ["name", "startDate", "endDate"]
+              }
+            },
+            "required": ["username", "type", "project"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }
+}

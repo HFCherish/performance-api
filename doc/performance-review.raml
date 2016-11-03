@@ -249,6 +249,28 @@ schemas:
       application/json:
         example: !include examples/response_200_get_programs.json
   /{programId}:
+    /assignments:
+        post:
+          description: add new sponsor/sponsee or project lead/member assignment
+          body:
+            schema: !include schemas/request_post_assignments.schema.json
+            example: !include examples/request_post_assignments.json
+          responses:
+            201:
+            400:
+        get:
+            description: Get all sponsor and projects info of this user on the program
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/response_200_get_assignments.json
+        /{aid}:
+            delete:
+              description: staff can delete an assignment
+              responses:
+                204:
+                404:
     /self_reviews:
       post:
         description: as a user, can create a self review in a program.
@@ -518,76 +540,3 @@ schemas:
           204:
           404:
           409:
-/users/{username}/assignments:
-      post:
-        description: add new sponsor/sponsee or project lead/member assignment
-        body:
-          schema: |
-            {
-              "type": "object",
-              "properties": {
-                "assignments": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "username": { "type": "string" },
-                          "role": { "enum": ["COACH"] }
-                        },
-                        "required": ["username", "role"],
-                        "additionalProperties": false
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "username": {
-                            "type": "string"
-                          },
-                          "role": {
-                            "enum": ["COACHEE"]
-                          },
-                          "coach": {
-                            "type": "string"
-                          }
-                        },
-                        "required": ["username", "role", "coach"],
-                        "additionalProperties": false
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          example: |
-            {
-              "assignments": [
-                {
-                  "username": "xxx",
-                  "role": "COACHEE",
-                  "coach": "xxx"
-                },
-                {
-                  "username": "xxx",
-                  "role": "COACH"
-                }
-              ]
-            }
-        responses:
-          201:
-          400:
-      get:
-          description: Get all assignment info of this user
-          responses:
-            200:
-              body:
-                application/json:
-                  example: !include examples/response_200_get_assignment.json
-      /{aid}:
-          delete:
-            description: delete assignment
-            responses:
-              204:
-              404:

@@ -63,28 +63,30 @@
 	
 	* return 404 when try to update a program not exists;
 
-# /programs/id/assignments
-* post
+# /users/{username}/programs
+* at present, same as get all programs
+
+# /users/{username}/programs/{programId}/assignments
+* post: can post sponsor / project_leader type assignments 
 	* return 201 when assign
 	* try to save to and can get that one from db;
 	* contains url
 
-	* return 400 when not contains username, role, coach
-* get
+	* return 400 when not contains required fields
+
+	* return 403 when current user not {username}
+* get: can get all assignments assigned by {username}
 	* return 200 when get assignments of this program;
 	* search from db
 	* contains right username, nickname, id, role, coach,  programId
 
-# /programs/id/assignments/aid
+	* return 403 when current user not {username} or not admin
+
+# /users/{username}/programs/{programId}/assignments/{aid}
 * delete
-	* return 204 when delete an assignment
-	* delete from db;
+	* modify the path
 
-	* return 404 when not exists;
-
-
-# /users/{username}/programs
-* at present, same as get all programs
+	* return 403 when current user not {username};
 
 # /users/{username}/programs/{programId}/self_reviews
 * post

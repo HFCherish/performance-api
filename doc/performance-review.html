@@ -828,7 +828,104 @@
       }
     }
   ]
-}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__self_reviews"><span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</a> <span class="methods"><a href="#users__username__programs__programId__self_reviews_post"><span class="badge badge_post">post</span></a> <a href="#users__username__programs__programId__self_reviews_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs__programId__self_reviews" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>as a user, can create a self review in a program.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all self reviews.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>as a user, can create a self review in a program.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__assignments"><span class="parent">/users/{username}/programs/{programId}</span>/assignments</a> <span class="methods"><a href="#users__username__programs__programId__assignments_post"><span class="badge badge_post">post</span></a> <a href="#users__username__programs__programId__assignments_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs__programId__assignments" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__assignments_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>add new sponsor/sponsee or project lead/member assignment</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__programs__programId__assignments_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all sponsor and projects info of this user on the program</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__assignments_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{username}/programs/{programId}</span>/assignments</h4></div><div class="modal-body"><div class="alert alert-info"><p>add new sponsor/sponsee or project lead/member assignment</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__assignments_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__assignments_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__assignments_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "assignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "username": { "type": "string" },
+              "type": { "enum": ["SPONSOR"] }
+            },
+            "required": ["username", "type"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "username": {
+                "type": "string"
+              },
+              "type": {
+                "enum": ["PROJECT_LEAD"]
+              },
+              "project": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "startDate": {"type": "number"},
+                  "endDate": {"type": "number"}
+                },
+                "required": ["name", "startDate", "endDate"]
+              }
+            },
+            "required": ["username", "type", "project"],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "assignments": [
+    {
+      "username": "hxu",
+      "type": "SPONSOR"
+    },
+    {
+      "username": "mjin",
+      "type": "PROJECT_LEAD",
+      "project": {
+        "name": "huawei project",
+        "startDate": 4657890,
+        "endDate": 4657890
+      }
+    }
+  ]
+}</code></pre></div><div class="tab-pane" id="users__username__programs__programId__assignments_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__assignments_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}/programs/{programId}</span>/assignments</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all sponsor and projects info of this user on the program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__assignments_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__assignments_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__assignments_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__programs__programId__assignments_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
+  {
+    "user": {
+      "username": "hxu",
+      "nickname": "hao xu",
+      "id": "1",
+      "email": "hxu@thoughtworks.com",
+      "role": "PM",
+      "department": "Professional Services"
+    },
+    "id": "assignment id",
+    "type": "SPONSOR",
+    "coachee": {
+      "username": "pzzheng",
+      "nickname": "peizhen zheng",
+      "id": "1",
+      "email": "pzzheng@thoughtworks.com",
+      "role": "Dev",
+      "department": "Professional Services"
+    }
+  },
+  {
+    "user": {
+      "username": "mjin",
+      "nickname": "ming jin",
+      "id": "1",
+      "email": "mjin@thoughtworks.com",
+      "role": "PM",
+      "department": "Professional Services"
+    },
+    "id": "assignment id",
+    "type": "PROJECT_LEAD",
+    "project": {
+      "name": "huawei project",
+      "startDate": 4657890,
+      "endDate": 4657890
+    }
+  }
+]</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__assignments__aid_"><span class="parent">/users/{username}/programs/{programId}/assignments</span>/{aid}</a> <span class="methods"><a href="#users__username__programs__programId__assignments__aid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_users__username__programs__programId__assignments__aid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__assignments__aid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>staff can delete an assignment</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__assignments__aid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/users/{username}/programs/{programId}/assignments</span>/{aid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>staff can delete an assignment</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__assignments__aid__delete_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__assignments__aid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__assignments__aid__delete_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li><li><strong>aid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__programs__programId__assignments__aid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__self_reviews"><span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</a> <span class="methods"><a href="#users__username__programs__programId__self_reviews_post"><span class="badge badge_post">post</span></a> <a href="#users__username__programs__programId__self_reviews_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs__programId__self_reviews" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>as a user, can create a self review in a program.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all self reviews.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>as a user, can create a self review in a program.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
   "type": "object",
   "properties": {
     "behaviors": {
@@ -1375,102 +1472,4 @@
 	"startDate": 69890809,
 	"endDate": 798098798,
 	"competences": ["1", "2"]
-}</code></pre></div><div class="tab-pane" id="programs__programId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="programs__programId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/programs</span>/{programId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>remove program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#programs__programId__delete_request" data-toggle="tab">Request</a></li><li><a href="#programs__programId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="programs__programId__delete_request"><h3>URI Parameters</h3><ul><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="programs__programId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_programs__programId__published"><span class="parent">/programs/{programId}</span>/published</a> <span class="methods"><a href="#programs__programId__published_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_programs__programId__published" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#programs__programId__published_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>publish program</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="programs__programId__published_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/programs/{programId}</span>/published</h4></div><div class="modal-body"><div class="alert alert-info"><p>publish program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#programs__programId__published_put_request" data-toggle="tab">Request</a></li><li><a href="#programs__programId__published_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="programs__programId__published_put_request"><h3>URI Parameters</h3><ul><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="programs__programId__published_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users__username__assignments" class="panel-title">/users/{username}/assignments</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__assignments"><span class="parent"></span>/users/{username}/assignments</a> <span class="methods"><a href="#users__username__assignments_post"><span class="badge badge_post">post</span></a> <a href="#users__username__assignments_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__assignments" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__assignments_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>add new sponsor/sponsee or project lead/member assignment</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__assignments_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all assignment info of this user</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__assignments_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/users/{username}/assignments</h4></div><div class="modal-body"><div class="alert alert-info"><p>add new sponsor/sponsee or project lead/member assignment</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__assignments_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__assignments_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__assignments_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
-  "type": "object",
-  "properties": {
-    "assignments": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "object",
-            "properties": {
-              "username": { "type": "string" },
-              "role": { "enum": ["COACH"] }
-            },
-            "required": ["username", "role"],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "properties": {
-              "username": {
-                "type": "string"
-              },
-              "role": {
-                "enum": ["COACHEE"]
-              },
-              "coach": {
-                "type": "string"
-              }
-            },
-            "required": ["username", "role", "coach"],
-            "additionalProperties": false
-          }
-        ]
-      }
-    }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><pre><code>{
-  "assignments": [
-    {
-      "username": "xxx",
-      "role": "COACHEE",
-      "coach": "xxx"
-    },
-    {
-      "username": "xxx",
-      "role": "COACH"
-    }
-  ]
-}
-</code></pre></div><div class="tab-pane" id="users__username__assignments_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__assignments_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/users/{username}/assignments</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all assignment info of this user</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__assignments_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__assignments_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__assignments_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__assignments_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
-  {
-    "user": {
-      "username": "pzzheng",
-      "nickname": "peizhen zheng",
-      "id": "1",
-      "email": "pzzheng@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    },
-    "id": "assignment id",
-    "role": "coachee",
-    "program": {
-      "id": "xxx",
-      "name": "pre-lead",
-      "links": {
-        "self": "/programs/1"
-      }
-    },
-    "coach": {
-      "username": "hxu",
-      "nickname": "hao xu",
-      "id": "1",
-      "email": "hxu@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    }
-  },
-  {
-    "user": {
-      "username": "hxu",
-      "nickname": "hao xu",
-      "id": "1",
-      "email": "hxu@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    },
-    "id": "assignment id",
-    "role": "coach",
-    "program": {
-      "id": "xxx",
-      "name": "pre lead",
-      "links": {
-        "self": "programs/1"
-      }
-    }
-  }
-]</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__assignments__aid_"><span class="parent">/users/{username}/assignments</span>/{aid}</a> <span class="methods"><a href="#users__username__assignments__aid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_users__username__assignments__aid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__assignments__aid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>delete assignment</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__assignments__aid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/users/{username}/assignments</span>/{aid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>delete assignment</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__assignments__aid__delete_request" data-toggle="tab">Request</a></li><li><a href="#users__username__assignments__aid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__assignments__aid__delete_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>aid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__assignments__aid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#authentication">/authentication</a></li><li><a href="#users">/users</a></li><li><a href="#users__username__programs">/users/{username}/programs</a></li><li><a href="#categories">/categories</a></li><li><a href="#competences">/competences</a></li><li><a href="#programs">/programs</a></li><li><a href="#users__username__assignments">/users/{username}/assignments</a></li></ul></div></div></div></div></body></html>
+}</code></pre></div><div class="tab-pane" id="programs__programId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="programs__programId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/programs</span>/{programId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>remove program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#programs__programId__delete_request" data-toggle="tab">Request</a></li><li><a href="#programs__programId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="programs__programId__delete_request"><h3>URI Parameters</h3><ul><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="programs__programId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_programs__programId__published"><span class="parent">/programs/{programId}</span>/published</a> <span class="methods"><a href="#programs__programId__published_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_programs__programId__published" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#programs__programId__published_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>publish program</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="programs__programId__published_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/programs/{programId}</span>/published</h4></div><div class="modal-body"><div class="alert alert-info"><p>publish program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#programs__programId__published_put_request" data-toggle="tab">Request</a></li><li><a href="#programs__programId__published_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="programs__programId__published_put_request"><h3>URI Parameters</h3><ul><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="programs__programId__published_put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#authentication">/authentication</a></li><li><a href="#users">/users</a></li><li><a href="#users__username__programs">/users/{username}/programs</a></li><li><a href="#categories">/categories</a></li><li><a href="#competences">/competences</a></li><li><a href="#programs">/programs</a></li></ul></div></div></div></div></body></html>

@@ -1,0 +1,39 @@
+[
+  {
+    "user": {
+      "username": "hxu",
+      "nickname": "hao xu",
+      "id": "1",
+      "email": "hxu@thoughtworks.com",
+      "role": "PM",
+      "department": "Professional Services"
+    },
+    "id": "assignment id",
+    "type": "SPONSOR",
+    "coachee": {
+      "username": "pzzheng",
+      "nickname": "peizhen zheng",
+      "id": "1",
+      "email": "pzzheng@thoughtworks.com",
+      "role": "Dev",
+      "department": "Professional Services"
+    }
+  },
+  {
+    "user": {
+      "username": "mjin",
+      "nickname": "ming jin",
+      "id": "1",
+      "email": "mjin@thoughtworks.com",
+      "role": "PM",
+      "department": "Professional Services"
+    },
+    "id": "assignment id",
+    "type": "PROJECT_LEAD",
+    "project": {
+      "name": "huawei project",
+      "startDate": 4657890,
+      "endDate": 4657890
+    }
+  }
+]

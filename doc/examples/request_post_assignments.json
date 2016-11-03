@@ -1,0 +1,17 @@
+{
+  "assignments": [
+    {
+      "username": "hxu",
+      "type": "SPONSOR"
+    },
+    {
+      "username": "mjin",
+      "type": "PROJECT_LEAD",
+      "project": {
+        "name": "huawei project",
+        "startDate": 4657890,
+        "endDate": 4657890
+      }
+    }
+  ]
+}
