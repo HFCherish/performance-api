@@ -1,0 +1,56 @@
+{
+  "count": 10,
+  "prev": "xx",
+  "next": "xxx",
+  "first": "xxx",
+  "last": "xxx",
+  "items": [
+    {
+      "id": "xxx",
+      "createdAt": 123123123,
+      "owner": "pzzheng",
+      "creator": "username who create the self reflection. can be coach name",
+      "links": [
+        {
+          "rel": "self",
+          "uri": "/users/pzzheng/programs/1/self_reviews/1"
+        }
+      ],
+      "program": {
+          "id": "xxx",
+          "name": "xx",
+          "description": "xx",
+          "status": "PUBLISHED",
+          "startDate": 789798787,
+          "endDate": 7978768
+      },
+      "competences": [
+        {
+          "id": "xx",
+          "name": "xxx",
+          "roleDescription": {
+            "description": "desc...",
+            "role": "PM"
+          },
+          "category": {
+            "id": "xx",
+            "name": "xxx"
+          },
+          "behaviors": [
+            {
+              "id": "xxx",
+              "description": "xxx",
+              "grade": "CON",
+              "hint": "xxx"
+            }
+          ]
+        }
+      ],
+      "evidences": [
+        {
+          "id": "xxx"
+        }
+      ]
+    }
+  ]
+}

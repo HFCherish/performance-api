@@ -244,26 +244,17 @@ schemas:
                     example: !include examples/response_200_get_evidences.json
 /users/{username}/programs:
   get:
-    description: users can get all the programs of him
+    description: users can get all the programs of himself. At present, all users can join in any program, which means here it will show all the programs in this system. The programs should be order by Desc, which means the latest program is in front.
+    body:
+      application/json:
+        example: !include examples/response_200_get_programs.json
   /{programId}:
     /self_reviews:
       post:
-        description: create new self review
+        description: as a user, can create a self review in a program.
         body:
           application/json:
-            schema: |
-              {
-                "type": "object",
-                "properties": {
-                  "behaviors": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "description": "behavior id"
-                    }
-                  }
-                }
-              }
+            schema: !include schemas/request_post_self_review.schema.json
             example: |
               {
                 "behaviors": ["id1", "id2"]
@@ -271,17 +262,15 @@ schemas:
         responses:
           201:
           400:
+          403:
+            description: can only create self review for yourself
       get:
-        description: list all self reviews
-        queryParameters:
-            isComplete:
-                type: string
-                description: if there is at least one evidence for the self review, the self review is complete
+        description: list all self reviews.
         responses:
           200:
             body:
               application/json:
-                example: !include examples/response_200_get_self_reflections.json
+                example: !include examples/response_200_get_self_reviews.json
       /{selfreviewId}:
         get:
           description: get one self review, include evidence draft if current user is the author
@@ -289,7 +278,7 @@ schemas:
             200:
                 body:
                   application/json:
-                    example: !include examples/response_200_get_self_reflection.json
+                    example: !include examples/response_200_get_self_review.json
             404:
         /feedbacks:
             post:
@@ -507,7 +496,7 @@ schemas:
         200:
           body:
             application/json:
-              example: !include examples/response_get_program.json
+              example: !include examples/response_200_get_program.json
     put:
       description: update program info
       body:

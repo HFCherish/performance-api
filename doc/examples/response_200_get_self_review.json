@@ -1,0 +1,95 @@
+{
+  "id": "xxx",
+  "createdAt": 123123123,
+  "owner": {
+    "username": "jksun",
+    "nickname": "peizhen zheng",
+    "id": "1",
+    "email": "pzzheng@thoughtworks.com",
+    "role": "Dev",
+    "department": "Professional Services"
+  },
+  "creator": {
+    "username": "hxu",
+    "nickname": "hao xu",
+    "id": "1",
+    "email": "hxu@thoughtworks.com",
+    "role": "Dev",
+    "department": "Professional Services"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "uri": "/users/pzzheng/programs/1/self_reviews/1"
+    }
+  ],
+  "program": {
+      "id": "xxx",
+      "name": "xx",
+      "description": "xx",
+      "status": "PUBLISHED",
+      "startDate": 789798787,
+      "endDate": 7978768
+  },
+  "competences": [
+    {
+      "id": "xx",
+      "name": "xxx",
+      "roleDescription": {
+        "description": "desc...",
+        "role": "PM"
+      },
+      "category": {
+        "id": "xx",
+        "name": "xxx"
+      },
+      "behaviors": [
+        {
+          "id": "xxx",
+          "description": "xxx",
+          "grade": "CON",
+          "hint": "xxx"
+        }
+      ]
+    }
+  ],
+  "evidences": [
+    {
+      "id": "xxx",
+      "content": "xxx",
+      "behavior": {
+        "id": "behavior_id"
+      },
+      "status": "submitted | unsubmitted",
+      "links": [
+        {
+          "rel": "self",
+          "uri": "/users/pzzheng/programs/1/self_reviews/xxx/evidences/evidcene"
+        }
+      ]
+    }
+  ],
+  "observers": [
+    {
+      "id": "xx",
+      "nickname": "xxx",
+      "username": "xxx"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "xxx",
+      "author": {
+        "username": "xxx",
+        "nickname": "xxx"
+      },
+      "author_role": "SPONSOR | PROJECT LEAD | OBSERVER",
+      "project": "performance review",
+      "feedback_type": "endorse | comment",
+      "comment": "xxx",
+      "competence": {
+        "id": "1"
+      }
+    }
+  ]
+}

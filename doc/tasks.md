@@ -63,38 +63,53 @@
 	
 	* return 404 when try to update a program not exists;
 
-	
-	
-	
-	
-==================================================================
-
-# /users/uid/self_reflections
+# /programs/id/assignments
 * post
-	* return 201 when create new self relfection for some user
-	* save to db and can get that self_reflection later
-	* contains url in location
+	* return 201 when assign
+	* try to save to and can get that one from db;
+	* contains url
+
+	* return 400 when not contains username, role, coach
+* get
+	* return 200 when get assignments of this program;
+	* search from db
+	* contains right username, nickname, id, role, coach,  programId
+
+# /programs/id/assignments/aid
+* delete
+	* return 204 when delete an assignment
+	* delete from db;
+
+	* return 404 when not exists;
+
+
+# /users/{username}/programs
+* at present, same as get all programs
+
+# /users/{username}/programs/{programId}/self_reviews
+* post
+	* modify the path
+	* add program field for self review table
 
 	* return 400 when behavior empty;
+	* return 400 when the behavior is not in the program
 
-	* return 403 when current user is not consistent with uid
+	* return 403 when current user is not {username}
 * get
-	* return 200 when get all the self_reflections;
-	* try to search db and can get the right one from db;
-	* contains right count, page, items (id, createdat, competence, behavior, links, owner, creator) info;
+	* contains right program, competences, links info
 
-	* return 403 when not uid or not admin
+	* return 403 when not uid or not admin or not sponsor or not project lead
+
+	* for people who are not {username} can only get self review with submitted evidence
 
 # /users/uid/self_reflections/srId
 * get
-	* return 200 when get one self_reflection;
-	* contains right id, createdat, competence, behavior, links, owner, creator in response;
+	* contains right program, competences info
 	* 
 	* return 404 when not exists;
 
 	* return 403 when not uid or not admin
 
-# can create more than one self reflections at one time.
 
 # /users/uid/self_reflections/srId/evidences
 * post
@@ -115,7 +130,7 @@
 
 	* return 403 when not owner of self_reflection or not witness of the this evidence or not admin
 
-# contains right evidences info when get self_reflections (get all & get one)
+# contains right evidences info when get one self_review
 
 # save witnesses and feedbacks when create evidence
     * save witnesses to db
@@ -132,28 +147,17 @@
 
 	* return 403 when current user is not the author of this fid
 
-# contains right feedbacks info when get evidence
+# contains right feedbacks info when get one self_review
+# contains right observers info when get one self_review
 
 
-
-# /programs/id/assignments
-* post
-	* return 201 when assign
-	* try to save to and can get that one from db;
-	* contains url
-
-	* return 400 when not contains username, role, coach
-* get
-	* return 200 when get assignments of this program;
-	* search from db
-	* contains right username, nickname, id, role, coach,  programId
-
-# /programs/id/assignments/aid
-* delete
-	* return 204 when delete an assignment
-	* delete from db;
-
-	* return 404 when not exists;
+	
+	
+	
+	
+	
+	
+	
 ===========================================
 # /users/uid/assignments
 * get

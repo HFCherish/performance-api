@@ -809,7 +809,26 @@
     }
   ]
 }
-</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users__username__programs" class="panel-title">/users/{username}/programs</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs"><span class="parent"></span>/users/{username}/programs</a> <span class="methods"><a href="#users__username__programs_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>users can get all the programs of him</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/users/{username}/programs</h4></div><div class="modal-body"><div class="alert alert-info"><p>users can get all the programs of him</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs_get_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__self_reviews"><span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</a> <span class="methods"><a href="#users__username__programs__programId__self_reviews_post"><span class="badge badge_post">post</span></a> <a href="#users__username__programs__programId__self_reviews_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs__programId__self_reviews" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>create new self review</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all self reviews</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>create new self review</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users__username__programs" class="panel-title">/users/{username}/programs</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs"><span class="parent"></span>/users/{username}/programs</a> <span class="methods"><a href="#users__username__programs_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>users can get all the programs of himself. At present, all users can join in any program, which means here it will show all the programs in this system. The programs should be order by Desc, which means the latest program is in front.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/users/{username}/programs</h4></div><div class="modal-body"><div class="alert alert-info"><p>users can get all the programs of himself. At present, all users can join in any program, which means here it will show all the programs in this system. The programs should be order by Desc, which means the latest program is in front.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs_get_request" data-toggle="tab">Request</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "count": 10,
+  "first": "xx",
+  "last": "",
+  "prev": "",
+  "next": "",
+  "items": [
+    {
+      "id": "xxx",
+      "name": "",
+      "description": "",
+      "status": "PUBLISHED",
+      "startDate": 789798787,
+      "endDate": 7978768,
+      "links": {
+          "self": "programs/1"
+      }
+    }
+  ]
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__programs__programId__self_reviews"><span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</a> <span class="methods"><a href="#users__username__programs__programId__self_reviews_post"><span class="badge badge_post">post</span></a> <a href="#users__username__programs__programId__self_reviews_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__programs__programId__self_reviews" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>as a user, can create a self review in a program.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__username__programs__programId__self_reviews_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all self reviews.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>as a user, can create a self review in a program.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_post_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_post_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
   "type": "object",
   "properties": {
     "behaviors": {
@@ -819,12 +838,12 @@
         "description": "behavior id"
       }
     }
-  }
-}
-</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  },
+  "required": ["behaviors"]
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
   "behaviors": ["id1", "id2"]
 }
-</code></pre></div><div class="tab-pane" id="users__username__programs__programId__self_reviews_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all self reviews</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>isComplete</strong>: <em>(string)</em><p>if there is at least one evidence for the self review, the self review is complete</p></li></ul></div><div class="tab-pane" id="users__username__programs__programId__self_reviews_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+</code></pre></div><div class="tab-pane" id="users__username__programs__programId__self_reviews_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>can only create self review for yourself</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__programs__programId__self_reviews_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}/programs/{programId}</span>/self_reviews</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all self reviews.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__programs__programId__self_reviews_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__programs__programId__self_reviews_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__programs__programId__self_reviews_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li><li><strong>programId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__programs__programId__self_reviews_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
   "count": 10,
   "prev": "xx",
   "next": "xxx",
@@ -834,23 +853,44 @@
     {
       "id": "xxx",
       "createdAt": 123123123,
-      "owner": "coachee name",
+      "owner": "pzzheng",
       "creator": "username who create the self reflection. can be coach name",
-      "behaviors": [{
-        "id": "xxx",
-        "name": "xxx",
-        "description": "xxx",
-        "hint": "xxx",
-        "competence": {
-          "id": "xxx",
-          "name": "xxx",
-          "description": "xxx",
-          "category": {
-            "id": "xxx",
-            "name": "xxx"
-          }
+      "links": [
+        {
+          "rel": "self",
+          "uri": "/users/pzzheng/programs/1/self_reviews/1"
         }
-      }],
+      ],
+      "program": {
+          "id": "xxx",
+          "name": "xx",
+          "description": "xx",
+          "status": "PUBLISHED",
+          "startDate": 789798787,
+          "endDate": 7978768
+      },
+      "competences": [
+        {
+          "id": "xx",
+          "name": "xxx",
+          "roleDescription": {
+            "description": "desc...",
+            "role": "PM"
+          },
+          "category": {
+            "id": "xx",
+            "name": "xxx"
+          },
+          "behaviors": [
+            {
+              "id": "xxx",
+              "description": "xxx",
+              "grade": "CON",
+              "hint": "xxx"
+            }
+          ]
+        }
+      ],
       "evidences": [
         {
           "id": "xxx"
@@ -878,21 +918,42 @@
     "role": "Dev",
     "department": "Professional Services"
   },
-  "behaviors": [{
-    "id": "behavior_id",
-    "name": "behavior name",
-    "description": "xxx",
-    "hint": "xxx",
-    "competence": {
-      "id": "xxx",
-      "name": "xxx",
-      "description": "xxx",
-      "category": {
-        "id": "xxx",
-        "name": "xxx"
-      }
+  "links": [
+    {
+      "rel": "self",
+      "uri": "/users/pzzheng/programs/1/self_reviews/1"
     }
-  }],
+  ],
+  "program": {
+      "id": "xxx",
+      "name": "xx",
+      "description": "xx",
+      "status": "PUBLISHED",
+      "startDate": 789798787,
+      "endDate": 7978768
+  },
+  "competences": [
+    {
+      "id": "xx",
+      "name": "xxx",
+      "roleDescription": {
+        "description": "desc...",
+        "role": "PM"
+      },
+      "category": {
+        "id": "xx",
+        "name": "xxx"
+      },
+      "behaviors": [
+        {
+          "id": "xxx",
+          "description": "xxx",
+          "grade": "CON",
+          "hint": "xxx"
+        }
+      ]
+    }
+  ],
   "evidences": [
     {
       "id": "xxx",
@@ -901,35 +962,35 @@
         "id": "behavior_id"
       },
       "status": "submitted | unsubmitted",
-      "observers": [
-        {
-          "id": "xx",
-          "nickname": "xxx",
-          "username": "xxx"
-        }
-      ],
       "links": [
         {
           "rel": "self",
-          "uri": "/users/jksun/self_reflections/xxx/evidences/evidcen"
-        }
-      ],
-      "feedbacks": [
-        {
-          "id": "xxx",
-          "author": {
-            "username": "xxx",
-            "nickname": "xxx"
-          },
-          "author_role": "coach | observer",
-          "program": {
-            "id": "xx",
-            "name": "xxx"
-          },
-          "feedback_type": "endorse | comment",
-          "comment": "xxx"
+          "uri": "/users/pzzheng/programs/1/self_reviews/xxx/evidences/evidcene"
         }
       ]
+    }
+  ],
+  "observers": [
+    {
+      "id": "xx",
+      "nickname": "xxx",
+      "username": "xxx"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "xxx",
+      "author": {
+        "username": "xxx",
+        "nickname": "xxx"
+      },
+      "author_role": "SPONSOR | PROJECT LEAD | OBSERVER",
+      "project": "performance review",
+      "feedback_type": "endorse | comment",
+      "comment": "xxx",
+      "competence": {
+        "id": "1"
+      }
     }
   ]
 }
