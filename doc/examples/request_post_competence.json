@@ -1,0 +1,17 @@
+{
+  "name": "Self Confidence",
+  "category": "category_id",
+  "roleDescriptions": [
+    {
+      "role": "PM | DEV | ...",
+      "description": "desc"
+    }
+  ],
+  "behaviros": [
+    {
+      "grade": "CON | SENIOR | ...",
+      "description": "desc",
+      "hint": "the hint about how to write evidence for this behavior"
+    }
+  ]
+}

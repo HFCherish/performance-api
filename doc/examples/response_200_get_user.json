@@ -3,7 +3,8 @@
   "username": "jksun",
   "email": "jksun@thoughtworks.com",
   "img": "imgs/img.gif",
-  "role": "Dev",
+  "role": ["DEV", "PM"],
+  "grade": "CON",
   "nickname": "Jiankang Sun",
   "department": "Professional Services",
   "links": [

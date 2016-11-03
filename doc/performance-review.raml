@@ -1,6 +1,6 @@
 #%RAML 0.8
-title: feedback API
-version: v2
+title: performance review
+version: v1
 mediaType:  application/json
 
 schemas:
@@ -22,7 +22,12 @@ schemas:
             "nickname": { "type": "string" },
             "email": { "type": "string" },
             "img": { "type": "string" },
-            "role": { "type": "string" },
+            "role": { 
+              "type": "array",
+              "items": {
+                "type": "enum"
+              }
+            },
             "department": { "type": "string" },
             "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
             "grade": { "type": "string" }
@@ -37,7 +42,7 @@ schemas:
           "nickname": { "type": "string" },
           "email": { "type": "string" },
           "img": { "type": "string" },
-          "role": { "type": "string" },
+          "roles": { "type": "string" },
           "department": { "type": "string" },
           "password": { "type": "string" },
           "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
@@ -53,7 +58,7 @@ schemas:
           "nickname": { "type": "string" },
           "email": { "type": "string" },
           "img": { "type": "string" },
-          "role": { "type": "string" },
+          "roles": { "type": "string" },
           "department": { "type": "string" },
           "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
           "grade": { "type": "string" }
@@ -125,7 +130,7 @@ schemas:
           "img": "imgs/img.gif",
           "nickname": "Jiankang Sun",
           "id": "12312",
-          "role": "DEV",
+          "role": "PM | DEV",
           "type": "NORMAL",
           "department": "Professional Services",
           "home_office": "Xi'an",
@@ -186,14 +191,6 @@ schemas:
             body:
               example: !include examples/response_400_post_users.json
               schema: !include schemas/response_400.schema.json
-    /assignments:
-        get:
-            description: list all program assignment for one person
-            responses:
-                200:
-                  body:
-                    application/json:
-                      example: !include examples/response_200_get_assignment.json
     /members:
         get:
             description: list all memebers of project lead
@@ -245,149 +242,152 @@ schemas:
                 body:
                   application/json:
                     example: !include examples/response_200_get_evidences.json
-    /programs/pid:
-      /self_reflections:
-        post:
-          description: create new self reflection
-          body:
-            application/json:
-              schema: |
-                {
-                  "type": "object",
-                  "properties": {
-                    "behaviors": {
-                      "type": "array",
-                      "items": {
+/users/{username}/programs:
+  get:
+    description: users can get all the programs of him
+  /{programId}:
+    /self_reviews:
+      post:
+        description: create new self review
+        body:
+          application/json:
+            schema: |
+              {
+                "type": "object",
+                "properties": {
+                  "behaviors": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "description": "behavior id"
+                    }
+                  }
+                }
+              }
+            example: |
+              {
+                "behaviors": ["id1", "id2"]
+              }
+        responses:
+          201:
+          400:
+      get:
+        description: list all self reviews
+        queryParameters:
+            isComplete:
+                type: string
+                description: if there is at least one evidence for the self review, the self review is complete
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/response_200_get_self_reflections.json
+      /{selfreviewId}:
+        get:
+          description: get one self review, include evidence draft if current user is the author
+          responses:
+            200:
+                body:
+                  application/json:
+                    example: !include examples/response_200_get_self_reflection.json
+            404:
+        /feedbacks:
+            post:
+              description: Create new feedback, only coach and observers can do this
+              body:
+                schema: |
+                  {
+                    "properties": {
+                      "comment": { "type": "string" },
+                      "feedback_type": { "type": "string" }
+                    },
+                    "required": ["feedback_type"]
+                  }
+                example: |
+                  {
+                    "feedback_type": "comment | endorse",
+                    "comment": "bla"
+                  }
+            /{feedbackId}:
+                delete:
+                    description: remove a feedback, only by author
+                    responses:
+                      204:
+                      404:
+                      403:
+        /evidences:
+          post:
+            description: create new evidence
+            body:
+              application/json:
+                schema: |
+                  {
+                    "type": "object",
+                    "properties": {
+                      "content": { "type": "string" },
+                      "observers": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      },
+                      "behavior": {
                         "type": "string",
                         "description": "behavior id"
                       }
                     }
                   }
-                }
-              example: |
-                {
-                  "behaviors": ["id1", "id2"]
-                }
-          responses:
-            201:
-            400:
-        get:
-          description: list all self reflections
-          queryParameters:
-              isComplete:
-                  type: string
-                  description: if there is at least one evidence for the self reflection, the self reflection is complete
-          responses:
-            200:
-              body:
-                application/json:
-                  example: !include examples/response_200_get_self_reflections.json
-        /{selfReflectionId}:
-          get:
-            description: get one self reflection, include evidence draft if current user is the author
+                example: |
+                  {
+                    "content": "xxxx",
+                    "observers": ["pzzheng", "scxu", "jksun"],
+                    "behavior": "123123123"
+                  }
             responses:
-              200:
+              201:
+              404:
+          /{evidenceId}:
+            get:
+              description: show evidences for this user in this program
+              responses:
+                200:
                   body:
                     application/json:
-                      example: !include examples/response_200_get_self_reflection.json
-              404:
-          /feedbacks:
-              post:
-                description: Create new feedback, only coach and observers can do this
+                      example: !include examples/response_200_get_evidence.json
+            put:
+                description: update evidence
                 body:
                   schema: |
                     {
                       "properties": {
-                        "comment": { "type": "string" },
-                        "feedback_type": { "type": "string" }
-                      },
-                      "required": ["feedback_type"]
-                    }
-                  example: |
-                    {
-                      "feedback_type": "comment | endorse",
-                      "comment": "bla"
-                    }
-              /{feedbackId}:
-                  delete:
-                      description: remove a feedback, only by author
-                      responses:
-                        204:
-                        404:
-                        403:
-          /evidences:
-            post:
-              description: create new evidence
-              body:
-                application/json:
-                  schema: |
-                    {
-                      "type": "object",
-                      "properties": {
                         "content": { "type": "string" },
-                        "observers": {
-                          "type": "array",
-                          "items": { "type": "string" }
-                        },
-                        "behavior": {
-                          "type": "string",
-                          "description": "behavior id"
-                        }
+                        "observers": { "type": "array", "items": { "type": "string" } }
                       }
                     }
                   example: |
-                    {
-                      "content": "xxxx",
-                      "observers": ["pzzheng", "scxu", "jksun"],
-                      "behavior": "123123123"
-                    }
-              responses:
-                201:
-                404:
-            /{evidenceId}:
-              get:
-                description: show evidences for this user in this program
+                   {
+                      "content": "new content"
+                   }
                 responses:
                   200:
-                    body:
-                      application/json:
-                        example: !include examples/response_200_get_evidence.json
+                  409:
+                    description: exception for already submitted evidence
+                  403:
+                  400:
+            delete:
+                description: delete an evidence
+                responses:
+                  204:
+                  403:
+            /submit:
               put:
-                  description: update evidence
-                  body:
-                    schema: |
-                      {
-                        "properties": {
-                          "content": { "type": "string" },
-                          "observers": { "type": "array", "items": { "type": "string" } }
-                        }
-                      }
-                    example: |
-                     {
-                        "content": "new content"
-                     }
-                  responses:
-                    200:
-                    409:
-                      description: exception for already submitted evidence
-                    403:
-                    400:
-              delete:
-                  description: delete an evidence
-                  responses:
-                    204:
-                    403:
-              /submit:
-                put:
-                  description: Make evidence submitted
-                  responses:
-                    204:
-                    409:
-                      description: exception for alreay submitted evidence
+                description: Make evidence submitted
+                responses:
+                  204:
+                  409:
+                    description: exception for alreay submitted evidence
 
 /categories:
   post:
-    description: create new category
+    description: as admin, can create new category
     body:
       application/json:
         schema: |
@@ -406,7 +406,7 @@ schemas:
       201:
       400:
   get:
-    description: get all categories
+    description: as admin, can get all categories
     responses:
         200:
             body:
@@ -418,7 +418,7 @@ schemas:
                         }]
   /{categoryId}:
     get:
-      description: get one category
+      description: as admin, can get one category
       responses:
         200:
           body:
@@ -450,131 +450,32 @@ schemas:
 
 /competences:
   post:
-    description: create new competence
+    description: as admin, can create new competence
     body:
       application/json:
-        schema: |
-          {
-            "type": "object",
-            "properties": {
-              "name": { "type": "string" },
-              "description": { "type": "string" },
-              "category": {
-                "type": "string",
-                "description": "Id of category"
-              },
-              "behaviors": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "description": { "type": "string" },
-                    "hint": { "type": "string" }
-                  },
-                  "required": ["description", "hint"]
-                },
-                "minItems": 1
-              }
-            },
-            "required": ["name", "description", "category", "behaviors"]
-          }
-        example: |
-          {
-            "name": "Self Confidence",
-            "description": "A ....",
-            "category": "category_id",
-            "behaviors": [
-              {
-                "hint": "hint",
-                "description": "desc"
-              }
-            ]
-          }
+        schema: !include schemas/request_post_competence.schema.json
+        example: !include examples/request_post_competence.json
     responses:
       201:
       400:
   get:
-    description: list competences
+    description: as admin, can list competences
+    queryParameters: 
+      role:
+        type: string
+        description: list competences for some role
     responses:
       200:
         body:
           application/json:
-            example: |
-              [
-                {
-                  "id": "xxx",
-                  "name": "Self Confidence",
-                  "description": "A ...",
-                  "category": {
-                    "id": "xxx",
-                    "name": "xxx"
-                  },
-                  "behaviors": [
-                    {
-                      "id": "xxx",
-                      "description": "xxx",
-                      "hint": "xxx"
-                    }
-                  ]
-                },
-                {
-                  "id": "xxx",
-                  "name": "Self Confidence",
-                  "description": "A ...",
-                  "category": {
-                    "id": "xxx",
-                    "name": "xxx"
-                  },
-                  "behaviors": [
-                    {
-                      "id": "xxx",
-                      "description": "xxx",
-                      "hint": "xxx"
-                    }
-                  ]
-                }
-              ]
+            example: !include examples/response_200_get_competences.json
+              
   /{competenceId}:
     put:
       body:
         application/json:
-          schema: |
-            {
-              "type": "object",
-              "properties": {
-                "name": { "type": "string" },
-                "description": { "type": "string" },
-                "category": {
-                  "type": "string",
-                  "description": "Id of category"
-                },
-                "behaviors": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "description": { "type": "string" },
-                      "hint": { "type": "string" },
-                      "id": { "type": "string" }
-                    },
-                    "required": ["description", "hint"]
-                  },
-                  "minItems": 1
-                }
-              },
-              "required": ["name", "description", "category", "behaviors"]
-            }
-          example: |
-            {
-              "name": "Self Confidence",
-              "description": "A ....",
-              "category": "category_id",
-              "behaviors": [{
-                "id": "id",
-                "hint": "hint",
-                "description": "desc"
-              }]
-            }
+          schema: !include schemas/request_post_competence.schema.json
+          example: !include examples/request_post_competence.json
       responses:
         200:
         404:
@@ -582,125 +483,45 @@ schemas:
       responses:
         204:
         404:
-/evidences:
-    get:
-        description: admin can get all evidences by query parameter (at most 100 items once)
-        queryParameters:
-            startDate:
-                type: number
-                description: the start date (inclusive)
-            endDate:
-                type: number
-                description: the end date (inclusive). The date must be Datetime type, or the endDate may be exclusive
-            owner:
-                type: string
-                description: the owner name of the evidences
-            program:
-                type: string
-                description: the program id of the evidences
-            role:
-                type: string
-                description: the role of the evidence owner, eg. COACHEE
-        responses:
-          200:
-            body:
-              example: !include examples/response_200_get_evidences.json
 /programs:
   post:
-    description: create new program
+    description: as admin, can create new program
     body:
       application/json:
-        schema: |
-          {
-            "type": "object",
-            "properites": {
-              "name": { "type": "string" },
-              "description": { "type": "string" }
-            },
-            "required": ["name", "description"]
-          }
-        example: |
-          {
-            "name": "xxx",
-            "description": "xxx"
-          }
+        schema: !include schemas/request_post_program.schema.json
+        example: !include examples/request_post_program.json
     responses:
       201:
       400:
   get:
-    description: list all programs
+    description: as admin, can list all programs
     responses:
       200:
         body:
           application/json:
-            example: |
-              {
-                "count": 10,
-                "first": "xx",
-                "last": "",
-                "prev": "",
-                "next": "",
-                "items": [
-                  {
-                    "id": "xxx",
-                    "name": "",
-                    "description": "",
-                    "status": "PUBLISHED",
-                    "links": {
-                        "self": "programs/1"
-                    }
-                  }
-                ]
-              }
+            example: !include examples/response_200_get_programs.json
   /{programId}:
     get:
-      description: get program info
+      description: as admin, can get program info
       responses:
         200:
           body:
             application/json:
-              example: |
-                {
-                  "id": "xxx",
-                  "name": "xx",
-                  "description": "xx",
-                  "status": "PUBLISHED",
-                  "competences": [
-                    {
-                      "id": "xx",
-                      "name": "xxx",
-                      "description": "xx",
-                      "category": {
-                        "id": "xx",
-                        "name": "xxx"
-                      },
-                      "behaviors": [
-
-                      ]
-                    }
-                  ],
-                  "links": {
-                      "self": "programs/1"
-                  }
-                }
+              example: !include examples/response_get_program.json
     put:
       description: update program info
       body:
         application/json:
-          example: |
-            {
-              "name": "xxx",
-              "description": "xxx"
-            }
+          schema: !include schemas/request_post_program.schema.json
+          example: !include examples/request_post_program.json
       responses:
         200:
         400:
     delete:
-      description: remove unpublished program
+      description: remove program
       responses:
         204:
         404:
-        409:
     /published:
       put:
         description: publish program
@@ -708,106 +529,7 @@ schemas:
           204:
           404:
           409:
-/projects:
-  post:
-    description: create new project
-    body:
-      application/json:
-        schema: |
-          {
-            "type": "object",
-            "properites": {
-              "name": { "type": "string" },
-              "description": { "type": "string" }
-            },
-            "required": ["name", "description"]
-          }
-        example: |
-          {
-            "name": "xxx",
-            "description": "xxx"
-          }
-    responses:
-      201:
-      400:
-  get:
-    description: list all projects
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-                "count": 10,
-                "first": "xx",
-                "last": "",
-                "prev": "",
-                "next": "",
-                "items": [
-                  {
-                    "id": "xxx",
-                    "name": "",
-                    "description": "",
-                    "status": "PUBLISHED",
-                    "links": {
-                        "self": "programs/1"
-                    }
-                  }
-                ]
-              }
-  /{projectid}:
-    get:
-      description: get project info
-      responses:
-        200:
-          body:
-            application/json:
-              example: |
-                {
-                  "id": "xxx",
-                  "name": "xx",
-                  "description": "xx",
-                  "status": "PUBLISHED",
-                  "competences": [
-                    {
-                      "id": "xx",
-                      "name": "xxx",
-                      "description": "xx",
-                      "category": {
-                        "id": "xx",
-                        "name": "xxx"
-                      },
-                      "behaviors": [
-
-                      ]
-                    }
-                  ],
-                  "links": {
-                      "self": "programs/1"
-                  }
-                }
-    delete:
-      description: remove unpublished program
-      responses:
-        204:
-        404:
-        409:
-    /published:
-      put:
-        description: publish program
-        responses:
-          204:
-          404:
-          409:  
-    /assignments:
-      get:
-          description: Get all assignment info of this project
-          responses:
-            200:
-              body:
-                application/json:
-                  example: !include examples/response_200_get_assignment.json
-/assignments:
+/users/{username}/assignments:
       post:
         description: add new sponsor/sponsee or project lead/member assignment
         body:
@@ -868,7 +590,7 @@ schemas:
           201:
           400:
       get:
-          description: Get all assignment info of this program
+          description: Get all assignment info of this user
           responses:
             200:
               body:
@@ -876,7 +598,7 @@ schemas:
                   example: !include examples/response_200_get_assignment.json
       /{aid}:
           delete:
-            description: As system admin, delete assignment
+            description: delete assignment
             responses:
               204:
               404:

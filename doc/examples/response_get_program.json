@@ -1,0 +1,39 @@
+{
+  "id": "xxx",
+  "name": "xx",
+  "description": "xx",
+  "status": "PUBLISHED",
+  "startDate": 789798787,
+  "endDate": 7978768,
+  "competences": [
+    {
+      "id": "xx",
+      "name": "xxx",
+      "roleDescription": [
+        {
+          "description": "desc...",
+          "role": "PM"
+        },
+        {
+          "description": "desc...",
+          "role": "DEV"
+        }
+      ],
+      "category": {
+        "id": "xx",
+        "name": "xxx"
+      },
+      "behaviors": [
+        {
+          "id": "xxx",
+          "description": "xxx",
+          "grade": "CON",
+          "hint": "xxx"
+        }
+      ]
+    }
+  ],
+  "links": {
+      "self": "/programs/1"
+  }
+}

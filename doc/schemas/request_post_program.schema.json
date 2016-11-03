@@ -1,0 +1,16 @@
+{
+	"type": "object",
+	"properites": {
+	  "name": { "type": "string" },
+	  "description": { "type": "string" },
+	  "startDate": {"type": "number"},
+	  "endDate": {"type": "number"},
+	  "competences": {
+	  	"type": "array",
+	  	"items": {
+	  		"id": "string"
+	  	}
+	  }
+	},
+	"required": ["name", "description"]
+}

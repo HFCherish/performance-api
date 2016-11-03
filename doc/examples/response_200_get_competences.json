@@ -1,0 +1,54 @@
+[
+  {
+    "id": "xxx",
+    "name": "Self Confidence",
+    "roleDescription": {
+      "description": "desc...",
+      "role": "PM"
+    },
+    "category": {
+      "id": "xxx",
+      "name": "xxx"
+    },
+    "behaviors": [
+      {
+        "id": "xxx",
+        "description": "xxx",
+        "grade": "CON",
+        "hint": "xxx"
+      }
+    ],
+    "links": [
+      {
+        "rel": "self",
+        "uri": "/competences/1"
+      }
+    ]
+  },
+  {
+    "id": "xxx",
+    "name": "Self Confidence",
+    "roleDescription": {
+      "description": "desc...",
+      "role": "PM"
+    },
+    "category": {
+      "id": "xxx",
+      "name": "xxx"
+    },
+    "behaviors": [
+      {
+        "id": "xxx",
+        "description": "xxx",
+        "grade": "CON",
+        "hint": "xxx"
+      }
+    ],
+    "links": [
+      {
+        "rel": "self",
+        "uri": "/competences/1"
+      }
+    ]
+  }
+]

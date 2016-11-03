@@ -1,89 +1,73 @@
-# keep /authentication, /users, /users/id, /users/id/password
+# keep the following api:
+1. /authentication, 
+2. /users, 
+3. /users/username, 
+4. /users/username/password, 
+5. /categories, 
+6. /categories/{categoryId}
 
-# /categories
-* post
-	* return 201 when create catetory
-	* try to save to db and can get that one from db;
-	* contains url in location;
-
-	* return 400 when name empty;
-
-	* return 403 when not admin;
-
-# /categories/cgid
+# /users, /users/username
 * get
-	* return 200 when get category
-	* contains right id, name, links in response;
-
-	* return 404 when not exists
-
-	* return 403 when not admin;
-* put
-	* return 204 when update category
-	* update the db;
-
-	* return 400 when name not exists
-* delete
-	* return 204 when delete
-	* delete from db and cannot find that one from db later
+	* modify role field as array
+	* can get grade info as well
 
 # /competences
 * post
-	* return 201 when create competence
-	* save to db and get that one later
-	* contains url in location
+	* post roleDescriptions rather than description
+	* post behavior with grade
 
-	* return 400 when name, description, category empty;
+	* return 400 when name, category, roleDescriptions empty;
 
 	* return 403 when not admin;
 * get
-	* return 200 when get all the competences;
-	* try to search db and can get the right one from db;
-	* contains right id, name, description, category, links info;
+	* can get right roleDescription and behavior with grade info
+	* can filtered by role
 
 # /competences/id
-* get
-	* return 200 when get some competence;
-	* contains id, name, description, category, links info;
-	*
-	* return 404 when not exists;
+* put
+	* put roleDescriptions rather than description
+	* put behavior with grade
+
+	* return 400 when name, category, roleDescriptions empty;
 
 	* return 403 when not admin;
-* put
-	* return 204 when update some competence;
-	* update the db;
 
-	* return 400 when name, description, category are empty;
-
-* delete
-	* return 204 when delete some competence;
-	* delete from the db;
-
-# /competences/cid/behaviors
+# /programs
 * post
-	* return 201 when create behavior
-	* try to save to and can get that one from db;
-	* contain url;
-
-	* return 400 when name, description, hint are empty;
-
-# /competences/cid/behaviors/bid
-* put
-	* return 204 when update some behavior;
-	* update the db;
-
+	* post startDate and endDate info
+	
 	* return 400 when name, description are empty;
 
-	* return 404 when not exists
-* delete
-	* return 204 when delete some behavior;
-	* delete from the db;
+	* return 403 when not admin
 
+	* save program competences at the same time
+* get
+	* contains startDate and endDate info
+
+	* return 403 when not admin 
+
+# /programs/id
+* get
+	* contains competences info
+	
 	* return 404 when not exists;
 
-# add behaviors detail when get competence (get all and get one)
+	* return 403 when not admin 
+* put
+	* post startDate and endDate info
+	* save program competences at the same time
+	
+	* return 400 when name, description are empty;
 
+	* return 403 when not admin
+	
+	* return 404 when try to update a program not exists;
 
+	
+	
+	
+	
+==================================================================
 
 # /users/uid/self_reflections
 * post
@@ -151,58 +135,6 @@
 # contains right feedbacks info when get evidence
 
 
-
-# /programs
-* post
-	* return 201 when create program;
-	* try to save to and can get that one from db;
-	* contains url in location;
-	* 
-	* return 400 when name, description, competences are empty;
-
-	* return 403 when not admin
-
-	* save program competences at the same time
-* get
-	* return 200 when get all the programs;
-	* try to search db and can get the right one from db;
-	* contains right count, page, items (id, name, description, links) info;
-
-	* return 403 when not admin 
-
-# /programs/id
-* get
-	* return 200 when get one program;
-	* contains right id, name, description, status, competences, links in response;
-	
-	* return 404 when not exists;
-
-	* return 403 when not admin 
-	
-	## /programs/id/published
-	* put
-	    * return 204 when publish a program;
-	    * update the db;
-	    *
-	    * return 404 when try to publish a program not exists;
-	    *
-	    * return 409 when program has been published;
-* put
-	* return 204 when update a program;
-	* update the db;
-	* 
-	* return 409 when try to update a published program;
-	* 
-	* return 404 when try to update a program not exists;
-
-	* return 400 when input not contains name, description, competences;
-* delete
-	* return 204 when delete a program;
-	* delete from the db and can not find that one from db;
-	* 
-	* return 409 when program has been published;
-	* 
-	* return 404 when try to delete a program not exists;
 
 # /programs/id/assignments
 * post
