@@ -7,58 +7,38 @@
   "items": [
     {
       "inviter": {
-        "username": "pzzheng",
-        "nickname": "peizhen zheng",
+        "username": "ysdeng",
+        "nickname": "yusong deng",
         "id": "1",
-        "email": "pzzheng@thoughtworks.com",
+        "email": "ysdeng@thoughtworks.com",
         "role": "Dev",
         "department": "Professional Services"
       },
-      "author": {
-        "username": "pzzheng",
-        "nickname": "peizhen zheng",
+      "owner": {
+        "username": "jhpeng",
+        "nickname": "jinhu peng",
         "id": "1",
-        "email": "pzzheng@thoughtworks.com",
+        "email": "jhpeng@thoughtworks.com",
         "role": "Dev",
         "department": "Professional Services"
       },
       "id": "invitation id",
-      "author_role": "COACH | OBSERVER",
+      "owner_role": "SPONSOR | PROJECT_LEAD | OBSERVER",
       "program": {
         "id": "xxx",
         "name": "xxx"
       },
-      "evidence": {
-        "id": "xxx",
-        "content": "his evidence",
-        "createdAt": 1476347270
-      },
-      "behavior": {
-        "id": "xxx",
-        "name": "name",
-        "description": "xxx",
-        "hint": "xxx",
-        "competence": {
-          "id": "xxx",
-          "name": "self confidence",
-          "description": "a...",
-          "category": {
-            "id": "xxx",
-            "name": "core competence"
-          },
-          "links": {
-            "self": "competences/1"
-          }
-        }
+      "self_review": {
+        "id": "xxx"
       },
       "links": [
         {
           "rel": "self",
-          "uri": "/users/uxxx/self_reflections/xxx/evidences/xxx/feedbacks"
+          "uri": "/users/jhpeng/programs/1/self_reviews/1/feedbacks"
         },
         {
-          "rel": "evidence",
-          "uri": "/users/uxxx/self_reflections/xxx/evidences/xxx"
+          "rel": "self_review",
+          "uri": "/users/jhpeng/programs/1/self_reviews/1"
         }
       ]
     }

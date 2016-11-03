@@ -619,63 +619,7 @@
       "message": "username can not be null"
     }
   ]
-}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__members"><span class="parent">/users/{username}</span>/members</a> <span class="methods"><a href="#users__username__members_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__members" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__members_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all memebers of project lead</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__members_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}</span>/members</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all memebers of project lead</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__members_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__members_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__members_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__members_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
-  {
-    "user": {
-      "username": "pzzheng",
-      "nickname": "peizhen zheng",
-      "id": "1",
-      "email": "pzzheng@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    },
-    "id": "assignment id",
-    "role": "coachee",
-    "program": {
-      "id": "xxx",
-      "name": "pre-lead",
-      "links": {
-        "self": "/programs/1"
-      }
-    },
-    "coach": {
-      "username": "hxu",
-      "nickname": "hao xu",
-      "id": "1",
-      "email": "hxu@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    }
-  }
-]</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__sponsees"><span class="parent">/users/{username}</span>/sponsees</a> <span class="methods"><a href="#users__username__sponsees_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__sponsees" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__sponsees_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all sponsees of sponsor</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__sponsees_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}</span>/sponsees</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all sponsees of sponsor</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__sponsees_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__sponsees_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__sponsees_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__username__sponsees_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
-  {
-    "user": {
-      "username": "pzzheng",
-      "nickname": "peizhen zheng",
-      "id": "1",
-      "email": "pzzheng@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    },
-    "id": "assignment id",
-    "role": "coachee",
-    "program": {
-      "id": "xxx",
-      "name": "pre-lead",
-      "links": {
-        "self": "/programs/1"
-      }
-    },
-    "coach": {
-      "username": "hxu",
-      "nickname": "hao xu",
-      "id": "1",
-      "email": "hxu@thoughtworks.com",
-      "role": "Dev",
-      "department": "Professional Services"
-    }
-  }
-]</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__invitations"><span class="parent">/users/{username}</span>/invitations</a> <span class="methods"><a href="#users__username__invitations_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__invitations" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__invitations_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all feedback invitations for one person</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__invitations_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}</span>/invitations</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all feedback invitations for one person</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__invitations_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__invitations_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__invitations_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>page</strong>: <em>(integer - default: 1)</em></li><li><strong>perPage</strong>: <em>(integer - default: 10)</em></li><li><strong>inviter</strong>: <em>(string)</em></li></ul></div><div class="tab-pane" id="users__username__invitations_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__invitations"><span class="parent">/users/{username}</span>/invitations</a> <span class="methods"><a href="#users__username__invitations_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__invitations" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__invitations_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all feedback invitations for one person</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__invitations_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}</span>/invitations</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all feedback invitations for one person</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__invitations_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__invitations_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__invitations_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>page</strong>: <em>(integer - default: 1)</em></li><li><strong>perPage</strong>: <em>(integer - default: 10)</em></li><li><strong>inviter</strong>: <em>(string)</em></li></ul></div><div class="tab-pane" id="users__username__invitations_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
   "count": 10,
   "prev": "xx",
   "next": "xxx",
@@ -684,126 +628,38 @@
   "items": [
     {
       "inviter": {
-        "username": "pzzheng",
-        "nickname": "peizhen zheng",
+        "username": "ysdeng",
+        "nickname": "yusong deng",
         "id": "1",
-        "email": "pzzheng@thoughtworks.com",
+        "email": "ysdeng@thoughtworks.com",
         "role": "Dev",
         "department": "Professional Services"
       },
-      "author": {
-        "username": "pzzheng",
-        "nickname": "peizhen zheng",
+      "owner": {
+        "username": "jhpeng",
+        "nickname": "jinhu peng",
         "id": "1",
-        "email": "pzzheng@thoughtworks.com",
+        "email": "jhpeng@thoughtworks.com",
         "role": "Dev",
         "department": "Professional Services"
       },
       "id": "invitation id",
-      "author_role": "COACH | OBSERVER",
+      "owner_role": "SPONSOR | PROJECT_LEAD | OBSERVER",
       "program": {
         "id": "xxx",
         "name": "xxx"
       },
-      "evidence": {
-        "id": "xxx",
-        "content": "his evidence",
-        "createdAt": 1476347270
-      },
-      "behavior": {
-        "id": "xxx",
-        "name": "name",
-        "description": "xxx",
-        "hint": "xxx",
-        "competence": {
-          "id": "xxx",
-          "name": "self confidence",
-          "description": "a...",
-          "category": {
-            "id": "xxx",
-            "name": "core competence"
-          },
-          "links": {
-            "self": "competences/1"
-          }
-        }
+      "self_review": {
+        "id": "xxx"
       },
       "links": [
         {
           "rel": "self",
-          "uri": "/users/uxxx/self_reflections/xxx/evidences/xxx/feedbacks"
+          "uri": "/users/jhpeng/programs/1/self_reviews/1/feedbacks"
         },
         {
-          "rel": "evidence",
-          "uri": "/users/uxxx/self_reflections/xxx/evidences/xxx"
-        }
-      ]
-    }
-  ]
-}
-</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__username__evidences"><span class="parent">/users/{username}</span>/evidences</a> <span class="methods"><a href="#users__username__evidences_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__username__evidences" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__username__evidences_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>list all submitted evidences of user</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__username__evidences_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{username}</span>/evidences</h4></div><div class="modal-body"><div class="alert alert-info"><p>list all submitted evidences of user</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__username__evidences_get_request" data-toggle="tab">Request</a></li><li><a href="#users__username__evidences_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__username__evidences_get_request"><h3>URI Parameters</h3><ul><li><strong>username</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>behaviors</strong>: <em>(string)</em><p>the ids of behaviors</p></li><li><strong>startDate</strong>: <em>(string)</em><p>the start date of the evidence(inclusive)</p></li><li><strong>endDate</strong>: <em>(string)</em><p>the end date of the evidence(inclusive). The date must be Datetime type, or the endDate may be exclusive</p></li></ul></div><div class="tab-pane" id="users__username__evidences_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
-  "count": 10,
-  "prev": "xx",
-  "next": "xxx",
-  "first": "xxx",
-  "last": "xxx",
-  "items": [
-    {
-      "id": "xxx",
-      "content": "xxx",
-      "createAt": 67586903678,
-      "selfReflection": "xxx",
-      "owner": {
-        "username": "pzzheng",
-        "nickname": "peizhen zheng",
-        "id": "1",
-        "email": "pzzheng@thoughtworks.com",
-        "role": "Dev",
-        "department": "Professional Services"
-      },
-      "observers": [
-        {
-          "id": "xx",
-          "nickname": "xxx",
-          "username": "xxx"
-        }
-      ],
-      "links": {
-        "self": "user/username/self_reflections/srid/evidences/eid",
-        "self_reflection": "user/username/self_reflections/srid"
-      },
-      "behavior": {
-        "id": "xxx",
-        "name": "xxx",
-        "description": "xxx",
-        "hint": "xxx",
-        "competence": {
-          "id": "xxx",
-          "name": "xxx",
-          "description": "xxx",
-          "category": {
-            "id": "xxx",
-            "name": "xxx"
-          },
-          "links": {
-            "self": "competences/1"
-          }
-        }
-      },
-      "feedbacks": [
-        {
-          "id": "xxx",
-          "author": {
-            "username": "xxx",
-            "nickname": "xxx"
-          },
-          "author_role": "coach | observer",
-          "program": {
-            "id": "xx",
-            "name": "xxx"
-          },
-          "feedback_type": "endorse | comment",
-          "comment": "xxx"
+          "rel": "self_review",
+          "uri": "/users/jhpeng/programs/1/self_reviews/1"
         }
       ]
     }

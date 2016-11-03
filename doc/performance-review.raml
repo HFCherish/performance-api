@@ -191,22 +191,6 @@ schemas:
             body:
               example: !include examples/response_400_post_users.json
               schema: !include schemas/response_400.schema.json
-    /members:
-        get:
-            description: list all memebers of project lead
-            responses:
-                200:
-                    body:
-                        application/json:
-                            example: !include examples/response_200_get_coachee_assignment.json
-    /sponsees:
-        get:
-            description: list all sponsees of sponsor
-            responses:
-                200:
-                    body:
-                        application/json:
-                            example: !include examples/response_200_get_coachee_assignment.json
     /invitations:
         get:
             description: list all feedback invitations for one person
@@ -224,24 +208,6 @@ schemas:
                     body:
                         application/json:
                             example: !include examples/response_200_get_witness_invitations.json
-    /evidences:
-         get:
-            description: list all submitted evidences of user
-            queryParameters:
-                behaviors:
-                    type: string
-                    description: the ids of behaviors
-                startDate:
-                    type: string
-                    description: the start date of the evidence(inclusive)
-                endDate:
-                    type: string
-                    description: the end date of the evidence(inclusive). The date must be Datetime type, or the endDate may be exclusive
-            responses:
-              200:
-                body:
-                  application/json:
-                    example: !include examples/response_200_get_evidences.json
 /users/{username}/programs:
   get:
     description: users can get all the programs of himself. At present, all users can join in any program, which means here it will show all the programs in this system. The programs should be order by Desc, which means the latest program is in front.
