@@ -302,22 +302,42 @@ schemas:
                   application/json:
                     example: !include examples/response_200_get_self_review.json
             404:
+        /invitations:
+          post:
+            description: staff can invite observers to give feedback to him/her
+            body:
+              schema: |
+                {
+                  "properties": {
+                    "observers": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  },
+                  "required": ["observers"]
+                }
+              example: |
+                {
+                  "observers": ["pzzheng", "jhpeng", "ysdeng"]
+                }
         /feedbacks:
             post:
-              description: Create new feedback, only coach and observers can do this
+              description: Create new feedback, only sponsor, project lead and observers can do this
               body:
                 schema: |
                   {
                     "properties": {
                       "comment": { "type": "string" },
-                      "feedback_type": { "type": "string" }
+                      "feedback_type": { "type": "string" },
+                      "competence": {"type": "string"}
                     },
-                    "required": ["feedback_type"]
+                    "required": ["feedback_type", "competence"]
                   }
                 example: |
                   {
-                    "feedback_type": "comment | endorse",
-                    "comment": "bla"
+                    "feedback_type": "COMMENT | ENDORSE",
+                    "comment": "bla",
+                    "competence": "1"
                   }
             /{feedbackId}:
                 delete:

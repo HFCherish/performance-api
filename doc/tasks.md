@@ -104,13 +104,47 @@
 
 	* for people who are not {username} can only get self review with submitted evidence
 
-# /users/uid/self_reflections/srId
+# /users/{username}/programs/{pid}/self_reviews/srId
 * get
 	* contains right program, competences info
-	* 
+	
 	* return 404 when not exists;
 
 	* return 403 when not uid or not admin
+
+# /users/{username}/programs/{pid}/self_reviews/srId/invitations
+* post
+	* return 201 when invite observers
+	* try to save to and can get that one from db;
+	* contains url
+
+	* return 400 when not contains required fields
+
+	* return 403 when current user not {username}
+
+# contains right observers info when get one self_review
+
+# /users/{username}/programs/{programId}/self_reviews/{srId}/feedbacks
+* post
+	* return 201 when create feedback
+	* try to save to and can get that one from db;
+	* contains url
+
+	* return 400 when not contains required fields
+	* return 400 when competence is not exists or not in the program
+
+	* return 403 when current user not sponsor, observer or project lead of {username}
+
+# /users/{username}/programs/{programId}/self_reviews/{srId}/feedbacks/{fid}
+* delete
+	* return 204 when delete feedback
+	* delete from db
+
+	* return 404 when the feedback does not exists for this self_review
+
+	* return 403 when current user is not the author of this fid
+
+# contains right feedbacks info when get one self_review
 
 
 # /users/uid/self_reflections/srId/evidences
@@ -138,21 +172,11 @@
     * save witnesses to db
 	* save feedbacks for each witness to db
 
-# /users/uid/self_reflections/srId/evidences/eid/feedbacks/fid
-* put
-	* return 204 when update feedbacks
-	* update db
-
-	* return 400 when approved, comment empty;
-
-	* return 404 when the feedback does not exists for this evidence
-
-	* return 403 when current user is not the author of this fid
-
-# contains right feedbacks info when get one self_review
-# contains right observers info when get one self_review
 
 
+
+	
+	
 	
 	
 	
