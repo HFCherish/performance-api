@@ -2,10 +2,7 @@
   {
     "id": "xxx",
     "name": "Self Confidence",
-    "roleDescription": {
-      "description": "desc...",
-      "role": "PM"
-    },
+    "description": "desc...",
     "category": {
       "id": "xxx",
       "name": "xxx"
@@ -15,7 +12,8 @@
         "id": "xxx",
         "description": "xxx",
         "grade": "CON",
-        "hint": "xxx"
+        "hint": "xxx",
+        "role": "PM | DEV"
       }
     ],
     "links": [
@@ -28,10 +26,7 @@
   {
     "id": "xxx",
     "name": "Self Confidence",
-    "roleDescription": {
-      "description": "desc...",
-      "role": "PM"
-    },
+    "description": "desc...",
     "category": {
       "id": "xxx",
       "name": "xxx"
@@ -41,7 +36,8 @@
         "id": "xxx",
         "description": "xxx",
         "grade": "CON",
-        "hint": "xxx"
+        "hint": "xxx",
+        "role": "PM | DEV"
       }
     ],
     "links": [

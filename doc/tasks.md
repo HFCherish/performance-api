@@ -8,27 +8,24 @@
 
 # /users, /users/username
 * get
-	* modify role field as array
 	* can get grade info as well
 
 # /competences
 * post
-	* post roleDescriptions rather than description
-	* post behavior with grade
+	* post behavior with grade and role info
 
 	* return 400 when name, category, roleDescriptions empty;
 
 	* return 403 when not admin;
 * get
-	* can get right roleDescription and behavior with grade info
-	* can filtered by role
+	* can get right behavior with grade info
+	* can filtered behavior by role
 
 # /competences/id
 * put
-	* put roleDescriptions rather than description
-	* put behavior with grade
+	* put behavior with grade and role info
 
-	* return 400 when name, category, roleDescriptions empty;
+	* return 400 when name, category empty;
 
 	* return 403 when not admin;
 

@@ -322,12 +322,7 @@
       "nickname": { "type": "string" },
       "email": { "type": "string" },
       "img": { "type": "string" },
-      "role": { 
-        "type": "array",
-        "items": {
-          "type": "enum"
-        }
-      },
+      "role": { "type": "string" },
       "department": { "type": "string" },
       "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
       "grade": { "type": "string" }
@@ -359,7 +354,7 @@
     "nickname": { "type": "string" },
     "email": { "type": "string" },
     "img": { "type": "string" },
-    "roles": { "type": "string" },
+    "role": { "type": "string" },
     "department": { "type": "string" },
     "password": { "type": "string" },
     "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
@@ -373,7 +368,7 @@
   "img": "imgs/img.gif",
   "nickname": "Jiankang Sun",
   "id": "12312",
-  "role": "PM | DEV",
+  "role": "PM_DEV",
   "type": "NORMAL",
   "department": "Professional Services",
   "home_office": "Xi&#39;an",
@@ -508,7 +503,7 @@
     "nickname": { "type": "string" },
     "email": { "type": "string" },
     "img": { "type": "string" },
-    "roles": { "type": "string" },
+    "role": { "type": "string" },
     "department": { "type": "string" },
     "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
     "grade": { "type": "string" }
@@ -826,10 +821,7 @@
         {
           "id": "xx",
           "name": "xxx",
-          "roleDescription": {
-            "description": "desc...",
-            "role": "PM"
-          },
+          "description": "desc...",
           "category": {
             "id": "xx",
             "name": "xxx"
@@ -839,7 +831,8 @@
               "id": "xxx",
               "description": "xxx",
               "grade": "CON",
-              "hint": "xxx"
+              "hint": "xxx",
+              "role": "PM | DEV"
             }
           ]
         }
@@ -889,10 +882,7 @@
     {
       "id": "xx",
       "name": "xxx",
-      "roleDescription": {
-        "description": "desc...",
-        "role": "PM"
-      },
+      "description": "desc...",
       "category": {
         "id": "xx",
         "name": "xxx"
@@ -902,7 +892,8 @@
           "id": "xxx",
           "description": "xxx",
           "grade": "CON",
-          "hint": "xxx"
+          "hint": "xxx",
+          "role": "PM | DEV"
         }
       ]
     }
@@ -1026,18 +1017,7 @@
       "type": "string",
       "description": "Id of category"
     },
-    "roleDescriptions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "description": { "type": "string" },
-          "role": { "type": "string" }
-        },
-        "required": ["description", "role"]
-      },
-      "minItems": 1
-    },
+    "description": {"type": "string"},
     "behaviors": {
       "type": "array",
       "items": {
@@ -1045,38 +1025,32 @@
         "properties": {
           "description": { "type": "string" },
           "hint": { "type": "string" },
-          "grade": { "type": "string" }
+          "grade": { "type": "string" },
+          "role": { "type": "string" }
         },
         "required": ["description", "grade", "hint"]
       },
       "minItems": 0
     }
   },
-  "required": ["name", "roleDescriptions", "category"]
+  "required": ["name", "category"]
 }</code></pre><p><strong>Example</strong>:</p><pre><code>{
   "name": "Self Confidence",
   "category": "category_id",
-  "roleDescriptions": [
-    {
-      "role": "PM | DEV | ...",
-      "description": "desc"
-    }
-  ],
+  "description": "desc...",
   "behaviros": [
     {
       "grade": "CON | SENIOR | ...",
       "description": "desc",
-      "hint": "the hint about how to write evidence for this behavior"
+      "hint": "the hint about how to write evidence for this behavior",
+      "role": "PM | DEV |..."
     }
   ]
-}</code></pre></div><div class="tab-pane" id="competences_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="competences_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/competences</h4></div><div class="modal-body"><div class="alert alert-info"><p>as admin, can list competences</p></div><ul class="nav nav-tabs"><li class="active"><a href="#competences_get_request" data-toggle="tab">Request</a></li><li><a href="#competences_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="competences_get_request"><h3>Query Parameters</h3><ul><li><strong>role</strong>: <em>(string)</em><p>list competences for some role</p></li></ul></div><div class="tab-pane" id="competences_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
+}</code></pre></div><div class="tab-pane" id="competences_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="competences_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/competences</h4></div><div class="modal-body"><div class="alert alert-info"><p>as admin, can list competences</p></div><ul class="nav nav-tabs"><li class="active"><a href="#competences_get_request" data-toggle="tab">Request</a></li><li><a href="#competences_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="competences_get_request"><h3>Query Parameters</h3><ul><li><strong>role</strong>: <em>(string)</em><p>list competences with behaviors for some role</p></li></ul></div><div class="tab-pane" id="competences_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>[
   {
     "id": "xxx",
     "name": "Self Confidence",
-    "roleDescription": {
-      "description": "desc...",
-      "role": "PM"
-    },
+    "description": "desc...",
     "category": {
       "id": "xxx",
       "name": "xxx"
@@ -1086,7 +1060,8 @@
         "id": "xxx",
         "description": "xxx",
         "grade": "CON",
-        "hint": "xxx"
+        "hint": "xxx",
+        "role": "PM | DEV"
       }
     ],
     "links": [
@@ -1099,10 +1074,7 @@
   {
     "id": "xxx",
     "name": "Self Confidence",
-    "roleDescription": {
-      "description": "desc...",
-      "role": "PM"
-    },
+    "description": "desc...",
     "category": {
       "id": "xxx",
       "name": "xxx"
@@ -1112,7 +1084,8 @@
         "id": "xxx",
         "description": "xxx",
         "grade": "CON",
-        "hint": "xxx"
+        "hint": "xxx",
+        "role": "PM | DEV"
       }
     ],
     "links": [
@@ -1131,18 +1104,7 @@
       "type": "string",
       "description": "Id of category"
     },
-    "roleDescriptions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "description": { "type": "string" },
-          "role": { "type": "string" }
-        },
-        "required": ["description", "role"]
-      },
-      "minItems": 1
-    },
+    "description": {"type": "string"},
     "behaviors": {
       "type": "array",
       "items": {
@@ -1150,28 +1112,25 @@
         "properties": {
           "description": { "type": "string" },
           "hint": { "type": "string" },
-          "grade": { "type": "string" }
+          "grade": { "type": "string" },
+          "role": { "type": "string" }
         },
         "required": ["description", "grade", "hint"]
       },
       "minItems": 0
     }
   },
-  "required": ["name", "roleDescriptions", "category"]
+  "required": ["name", "category"]
 }</code></pre><p><strong>Example</strong>:</p><pre><code>{
   "name": "Self Confidence",
   "category": "category_id",
-  "roleDescriptions": [
-    {
-      "role": "PM | DEV | ...",
-      "description": "desc"
-    }
-  ],
+  "description": "desc...",
   "behaviros": [
     {
       "grade": "CON | SENIOR | ...",
       "description": "desc",
-      "hint": "the hint about how to write evidence for this behavior"
+      "hint": "the hint about how to write evidence for this behavior",
+      "role": "PM | DEV |..."
     }
   ]
 }</code></pre></div><div class="tab-pane" id="competences__competenceId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="competences__competenceId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/competences</span>/{competenceId}</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#competences__competenceId__delete_request" data-toggle="tab">Request</a></li><li><a href="#competences__competenceId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="competences__competenceId__delete_request"><h3>URI Parameters</h3><ul><li><strong>competenceId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="competences__competenceId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="programs" class="panel-title">/programs</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_programs"><span class="parent"></span>/programs</a> <span class="methods"><a href="#programs_post"><span class="badge badge_post">post</span></a> <a href="#programs_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_programs" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#programs_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>as admin, can create new program</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#programs_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>as admin, can list all programs</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="programs_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/programs</h4></div><div class="modal-body"><div class="alert alert-info"><p>as admin, can create new program</p></div><ul class="nav nav-tabs"><li class="active"><a href="#programs_post_request" data-toggle="tab">Request</a></li><li><a href="#programs_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="programs_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
@@ -1225,16 +1184,7 @@
     {
       "id": "xx",
       "name": "xxx",
-      "roleDescription": [
-        {
-          "description": "desc...",
-          "role": "PM"
-        },
-        {
-          "description": "desc...",
-          "role": "DEV"
-        }
-      ],
+      "description": "desc...",
       "category": {
         "id": "xx",
         "name": "xxx"
@@ -1244,7 +1194,8 @@
           "id": "xxx",
           "description": "xxx",
           "grade": "CON",
-          "hint": "xxx"
+          "hint": "xxx",
+          "role": "PM | DEV"
         }
       ]
     }

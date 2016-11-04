@@ -28,10 +28,7 @@
         {
           "id": "xx",
           "name": "xxx",
-          "roleDescription": {
-            "description": "desc...",
-            "role": "PM"
-          },
+          "description": "desc...",
           "category": {
             "id": "xx",
             "name": "xxx"
@@ -41,7 +38,8 @@
               "id": "xxx",
               "description": "xxx",
               "grade": "CON",
-              "hint": "xxx"
+              "hint": "xxx",
+              "role": "PM | DEV"
             }
           ]
         }

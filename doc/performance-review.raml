@@ -22,12 +22,7 @@ schemas:
             "nickname": { "type": "string" },
             "email": { "type": "string" },
             "img": { "type": "string" },
-            "role": { 
-              "type": "array",
-              "items": {
-                "type": "enum"
-              }
-            },
+            "role": { "type": "string" },
             "department": { "type": "string" },
             "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
             "grade": { "type": "string" }
@@ -42,7 +37,7 @@ schemas:
           "nickname": { "type": "string" },
           "email": { "type": "string" },
           "img": { "type": "string" },
-          "roles": { "type": "string" },
+          "role": { "type": "string" },
           "department": { "type": "string" },
           "password": { "type": "string" },
           "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
@@ -58,7 +53,7 @@ schemas:
           "nickname": { "type": "string" },
           "email": { "type": "string" },
           "img": { "type": "string" },
-          "roles": { "type": "string" },
+          "role": { "type": "string" },
           "department": { "type": "string" },
           "type": { "enum": ["SYSTEM_ADMIN", "NORMAL"] },
           "grade": { "type": "string" }
@@ -130,7 +125,7 @@ schemas:
           "img": "imgs/img.gif",
           "nickname": "Jiankang Sun",
           "id": "12312",
-          "role": "PM | DEV",
+          "role": "PM_DEV",
           "type": "NORMAL",
           "department": "Professional Services",
           "home_office": "Xi'an",
@@ -433,7 +428,7 @@ schemas:
     queryParameters: 
       role:
         type: string
-        description: list competences for some role
+        description: list competences with behaviors for some role
     responses:
       200:
         body:
